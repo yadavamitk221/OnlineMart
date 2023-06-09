@@ -1,0 +1,25 @@
+<link rel="stylesheet" href="/css/signin.css">
+
+
+
+<div class="wrapper">
+    <div class="title">
+       Login Form
+    </div>
+    <form action="/auth/create-session" method="post">
+       <div class="field">
+        <input type="text" name="email" required>
+          <label>Email Address</label>
+       </div>
+       <div class="field">
+        <input type="text" name="password" required>
+          <label>Password</label>
+       </div>
+       <div class="field">
+          <input type="submit" value="Login">
+       </div>
+       <div class="signup-link">
+          Not a member? <a href="/auth/signup">Signup now</a>
+       </div>
+    </form>
+ </div>

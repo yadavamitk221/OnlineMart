@@ -3,7 +3,8 @@ const mongoose = require('mongoose');
 const InventorySchema = new mongoose.Schema({
     productName: {
         type: String,
-        require: true
+        require: true,
+        unique: true
     },
     mrp: {
         type: Number,
@@ -20,14 +21,24 @@ const InventorySchema = new mongoose.Schema({
     image: {
         type: String
     },
-    SubCategory :{
+    subCategoryid :{
         type: mongoose.Schema.Types.ObjectId,
         ref: 'SubCategory',
         required: true
     },
-    Category :{
+    categoryid :{
         type: mongoose.Schema.Types.ObjectId,
         ref: 'Category',
+        req: true
+    }, 
+    storeid: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Store',
+        req: true
+    },
+    userid: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'User',
         req: true
     }
 },{

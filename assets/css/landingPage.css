@@ -1,0 +1,11 @@
+.stores-main-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.stores-container{
+    border: 1px solid black;
+    width: max-content;
+    padding: 10px;
+}

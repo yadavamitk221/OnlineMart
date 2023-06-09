@@ -1,0 +1,16 @@
+<link rel="stylesheet" href="/css/landingPage.css">
+
+<h1>Welcome to Online Mart</h1>
+
+<% for(store of stores){ %> 
+    <div class="stores-main-container">
+        <div class="stores-container">
+            <h3><%= store.storeName %></h3>
+            <p>Address: <%= store.address %> </p>
+            <p><%= store.gst %></p>
+            <p><%= store.logo %></p>
+            <p><%= store.startTiming%></p>
+            <p><%= store.closeTiming %></p>
+        </div>
+    </div>
+<% } %> 

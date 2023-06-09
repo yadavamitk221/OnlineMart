@@ -1,0 +1,33 @@
+<link rel="stylesheet" href="/css/signin.css">
+
+<div class="wrapper">
+    <div class="title">
+       Sign Up Form
+    </div>
+    <form action="/auth/create-user" method="post">
+       <div class="field">
+        <input type="text" name="name" required>
+          <label>Name</label>
+       </div>
+       <div class="field">
+        <input type="text" name="email"  required>
+          <label>email</label>
+       </div>
+
+       <div class="field">
+        <input type="text" name="password"  required>
+          <label>Password</label>
+       </div>
+
+       <div class="field">
+        <input type="text" name="confirm_password"  required>
+          <label>Confirm Password</label>
+       </div>
+       <div class="field">
+          <input type="submit" value="Sign Up">
+       </div>
+       <div class="signup-link">
+          Already Registered? <a href="/auth/signin">Signin</a>
+       </div>
+    </form>
+ </div>

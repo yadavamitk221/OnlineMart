@@ -5,10 +5,6 @@ const UserSchema = new mongoose.Schema({
         type: String,
         require: true
     },
-    businessName: {
-        type: String,
-        require: true
-    },
     password: {
         type: String,
         require: true

@@ -1,0 +1,35 @@
+<!-- @format -->
+
+<h1>Dashboard</h1>
+
+<button>
+  <a href="Category">Categoty</a>
+</button>
+
+<button>
+  <a href="/inventory/inventoryForm">Inventory</a>
+</button>
+
+<button>
+  <a href="Subcategory">Subcategory</a>
+</button>
+
+<%if(storeDetails){ %>
+
+<a href="/product/showProduct/<%= locals.user._id %>">
+  <div class="store-container">
+    <div class="store-details">
+      <h3>Shop Name<%= storeDetails.name %></h3>
+      <p>Address <%= storeDetails.address%></p>
+      <p>GST <%= storeDetails.gst%></p>
+      <p>Open At <%= storeDetails.startTiming%></p>
+      <p>Close At <%= storeDetails.closeTiming%></p>
+    </div>
+    <button><a href="/store/delete">Delete Store</a></button>
+  </div>
+</a>
+<% }else{%>
+<button>
+  <a href="/store/storeForm">Add Store</a>
+</button>
+<% } %>

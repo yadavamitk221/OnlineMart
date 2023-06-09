@@ -1,0 +1,50 @@
+<!-- @format -->
+
+<link rel="stylesheet" href="/css/store.css" />
+
+<h1>Regester Your shop here</h1>
+<br />
+<br />
+
+<div class="store-form-container">
+  <div class="form-container">
+    <h3 id="page-title">Welcome (store Name)</h3>
+
+    <form action="/store/addStore" method="post">
+      <br /><br />
+      <label for="storeName">storeName</label>
+      <input type="text" name="storeName" id="storeName" required />
+      <br />
+      <br />
+
+      <label for="address">Address :</label>
+      <textarea
+        name="address"
+        id="address"
+        cols="30"
+        rows="10"
+        placeholder="Enter Your Address..."
+        required
+      ></textarea>
+      <br /><br />
+
+      <label for="gst">Gst no. :</label>
+      <input
+        type="text"
+        name="gst"
+        id="gst"
+        placeholder="Your Gst Number..."
+        required
+      />
+      <br /><br />
+
+      <label for="startTiming">Store Time :</label>
+      <input type="time" name="startTiming" id="openTime" required />
+
+      <input type="time" name="closeTiming" id="closeTiming" required />
+      <br /><br />
+
+      <input type="submit" id="storeInfo" value="Add Details" />
+    </form>
+  </div>
+</div>

@@ -1,0 +1,52 @@
+<!-- @format -->
+<script src="/javaScript/inventory.js"></script>
+<link rel="stylesheet" href="/css/inventory.css" />
+<h1>Add Your Items here</h1>
+<br />
+<br />
+
+<h1>Select Category and Subcategory</h1>
+<form id="addInventory" action="inventory/addInventory" method="post">
+  <div class="dropdown">
+    <label for="category">Category:</label>
+    <select id="category">
+      <option value="">Select Category</option>
+      <option value="electronics">Electronics</option>
+      <option value="clothing">Clothing</option>
+      <option value="books">Books</option>
+    </select>
+  </div>
+
+  <br /><br />
+
+  <div class="dropdown">
+    <label for="subcategory">Subcategory:</label>
+    <select id="subcategory">
+      <option value="">Select Subcategory</option>
+    </select>
+  </div>
+
+  <label for="productName">Product Name</label>
+  <input type="text" name="productName" id="productName" />
+  <br />
+  <br />
+
+  <label for="mrp">MRP</label>
+  <input type="number" name="mrp" id="mrp" />
+  <br />
+  <br />
+
+  <label for="sp">SP</label>
+  <input type="number" name="sp" id="sp" />
+  <br />
+  <br />
+
+  <label for="qty">qty</label>
+  <input type="number" name="qty" id="qty" />
+  <br />
+
+  <br />
+  <br />
+
+  <input type="submit">
+</form>

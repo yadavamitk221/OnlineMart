@@ -1,0 +1,17 @@
+<h1> <%= store.storeName %> </h1>
+
+<h3>all Products</h3>
+<% if(products){%>
+<% for(let i = 0; i < products.length; i++){%>
+        <div class="productcard">
+            <h3>
+                <%= products[i].productName %>
+            </h3>
+            <p> <%= products[i].mrp %> </p>
+            <p> <%= products[i].sp %> </p>
+            <p> <%= products[i].qty %> </p>
+        </div>
+    <% } %>
+<% }else{%>
+    <h3>No Products to display</h3>
+<% } %>

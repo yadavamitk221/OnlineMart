@@ -1,0 +1,16 @@
+<link rel="stylesheet" href="/css/navbar.css">
+
+<nav>
+    <div class="navChild">
+        <h2 ><a id="logo" href="/">Online Mart</a></h2>
+    </div>
+    <div class="navChild"> 
+        <% if(locals.user) {%>
+            <button class="authbtn"><a href="/auth/signout">Logout</a></button>
+        <% }else{ %>
+            <button class="authbtn"><a href="/auth/signin">Login</a></button>
+            <button class="authbtn"><a href="/auth/signup">signup</a></button>
+        <% } %>
+    </div>
+</nav>
+<div class="shop-container"></div>

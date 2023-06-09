@@ -1,6 +1,7 @@
-// Handle rendering of the dashboard
-exports.renderDashboard = async (req, res) => {
-    // Fetch relevant data for the dashboard
-    // Render the dashboard view with the data
-  };
-  
+const Store = require('../models/Store');
+exports.dashboardDetails = async (req, res) => {
+    const store = await Store.findOne({userid: req.user.id});
+    return res.render('dashboard', {
+        storeDetails: store
+    });
+}

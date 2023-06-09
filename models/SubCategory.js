@@ -5,9 +5,14 @@ const SubCategorySchema = new mongoose.Schema({
         type: String,
         require: true
     },
-    Category :{
+    categoryid :{
         type: mongoose.Schema.Types.ObjectId,
         ref: 'Category'
+    },
+    userid: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'User',
+        req: true
     }
 },{
     timestamps: true

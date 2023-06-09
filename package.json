@@ -1,5 +1,6 @@
 {
   "dependencies": {
+    "connect-mongo": "^5.0.0",
     "cookie-parser": "^1.4.6",
     "ejs": "^3.1.9",
     "express": "^4.18.2",
@@ -10,6 +11,8 @@
     "multer": "^1.4.5-lts.1",
     "node.js": "^0.0.1-security",
     "nodemon": "^2.0.22",
+    "passport": "^0.6.0",
+    "passport-local": "^1.0.0",
     "session": "^0.1.0"
   },
   "name": "divisha",
@@ -17,7 +20,7 @@
   "description": "Assignment",
   "main": "index.js",
   "scripts": {
-    "start" : "node index.js",
+    "start": "node index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Amit Kumar Yadav",
