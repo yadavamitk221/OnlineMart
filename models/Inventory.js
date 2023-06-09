@@ -4,7 +4,6 @@ const InventorySchema = new mongoose.Schema({
     productName: {
         type: String,
         require: true,
-        unique: true
     },
     mrp: {
         type: Number,

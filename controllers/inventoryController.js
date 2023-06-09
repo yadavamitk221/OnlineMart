@@ -19,7 +19,7 @@ exports.addInventory = async (req, res) => {
     // finding the category in
     const category = await Category.findOne({
       name: reqcategory,
-      userid: req.user.id,
+      userid: req.user.id
     });
 
 

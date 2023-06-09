@@ -6,10 +6,11 @@
     </div>
     <div class="navChild"> 
         <% if(locals.user) {%>
-            <button class="authbtn"><a href="/auth/signout">Logout</a></button>
+            <button class="authbtn"><a class="nav-links"  href="/dashboard/details">Dashboard</a></button>
+            <button class="authbtn"><a class="nav-links"  href="/auth/signout">Logout</a></button>
         <% }else{ %>
-            <button class="authbtn"><a href="/auth/signin">Login</a></button>
-            <button class="authbtn"><a href="/auth/signup">signup</a></button>
+            <button class="authbtn"><a class="nav-links"  href="/auth/signin">Login</a></button>
+            <button class="authbtn"><a class="nav-links" href="/auth/signup">signup</a></button>
         <% } %>
     </div>
 </nav>

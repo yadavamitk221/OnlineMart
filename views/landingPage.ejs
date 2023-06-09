@@ -1,16 +1,22 @@
-<link rel="stylesheet" href="/css/landingPage.css">
+<!-- @format -->
+
+<link rel="stylesheet" href="/css/landingPage.css" />
 
 <h1>Welcome to Online Mart</h1>
 
-<% for(store of stores){ %> 
-    <div class="stores-main-container">
-        <div class="stores-container">
-            <h3><%= store.storeName %></h3>
-            <p>Address: <%= store.address %> </p>
-            <p><%= store.gst %></p>
-            <p><%= store.logo %></p>
-            <p><%= store.startTiming%></p>
-            <p><%= store.closeTiming %></p>
-        </div>
+<% for(store of stores){ %>
+<div class="stores-main-container">
+  <a href="/product/showProduct/<%=store.userid%>">
+    <div class="stores-container">
+      <h2 class="store-name"><%= store.storeName %></h2>
+      <p>Address: <%= store.address %></p>
+      <p>GST: <%= store.gst %></p>
+      <p>Open Time:<%= store.startTiming%></p>
+      <p>Close Time: <%= store.closeTiming %></p>
     </div>
-<% } %> 
+    <% if(locals.user && locals.user.id == store.userid){ %>
+    <a href="/store/delete/<%=store.id%>">Delete</a>
+    <% } %>
+  </a>
+</div>
+<% } %>

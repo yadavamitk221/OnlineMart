@@ -1,17 +1,28 @@
-<h1> <%= store.storeName %> </h1>
+<!-- @format -->
+<link rel="stylesheet" href="/css/productDetails.css" />
 
-<h3>all Products</h3>
-<% if(products){%>
-<% for(let i = 0; i < products.length; i++){%>
-        <div class="productcard">
-            <h3>
-                <%= products[i].productName %>
-            </h3>
-            <p> <%= products[i].mrp %> </p>
-            <p> <%= products[i].sp %> </p>
-            <p> <%= products[i].qty %> </p>
+
+<h1><%= store.storeName %></h1>
+<div class="main-container">
+  
+  <% if(products){%> <% for(let i = 0; i < products.length; i++){%>
+  <div class="product-body">
+    <div class="card">
+      <div class="header"><%= products[i].productName %></div>
+      <div class="body">
+        <div class="details">
+          <div class="details-name">MRP: <%= products[i].mrp %></div>
         </div>
-    <% } %>
-<% }else{%>
-    <h3>No Products to display</h3>
-<% } %>
+        <div class="details">
+          <div class="details-name">SP: <%= products[i].sp %></div>
+        </div>
+        <div class="details">
+          <div class="details-name">qty: <%= products[i].qty %></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <% } %> <% }else{%>
+  <h3>No Products to display</h3>
+  <% } %>
+</div>

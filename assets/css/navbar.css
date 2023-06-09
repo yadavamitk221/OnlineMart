@@ -11,8 +11,6 @@ nav{
     align-items: center;
     justify-content: space-between;
 }
-
-
 #logo{
     color: white;
     font-size: 25px;
@@ -26,14 +24,14 @@ nav{
 
 .authbtn{
     padding: 5px;
-    width: 5rem;
+    width: 6rem;
     border-radius: 10px;
     background-color: white;
     color: #4a99f8;
     margin-right: 10px;
 }
 
-a{
+.nav-links{
     text-decoration: none;
     color: #4a99f8;
     font-weight: 600;

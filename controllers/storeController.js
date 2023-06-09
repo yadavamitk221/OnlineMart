@@ -1,5 +1,8 @@
 /** @format */
 const Store = require("../models/Store");
+const Category = require('../models/Category');
+const SubCategory = require('../models/SubCategory');
+const Inventory = require('../models/Inventory');
 // Handle addStoreInfo
 exports.addStoreInfo = async (req, res) => {
   try {
@@ -31,7 +34,20 @@ exports.storeForm = (req, res) => {
 
 module.exports.destroy = async function (req, res) {
   try {
-    let store = await Store.findOne({user: req.user.id});
+  let store = await Store.findById(req.params.id);
+
+    await Category.deleteMany({
+      userid: req.user.id
+    });
+
+    await SubCategory.deleteMany({
+      userid: req.user.id
+    });
+    
+    await Inventory.deleteMany({
+      userid: req.user.id
+    });
+
     store.deleteOne({
       _id: store._id
     });

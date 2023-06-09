@@ -16,16 +16,16 @@
 
 <%if(storeDetails){ %>
 
-<a href="/product/showProduct/<%= locals.user._id %>">
+<a href="/product/showProduct/<%=storeDetails.userid%>">
   <div class="store-container">
     <div class="store-details">
-      <h3>Shop Name<%= storeDetails.name %></h3>
+      <h3>Shop Name: <%= storeDetails.storeName %></h3>
       <p>Address <%= storeDetails.address%></p>
       <p>GST <%= storeDetails.gst%></p>
       <p>Open At <%= storeDetails.startTiming%></p>
       <p>Close At <%= storeDetails.closeTiming%></p>
     </div>
-    <button><a href="/store/delete">Delete Store</a></button>
+    <button><a href="/store/delete/<%=storeDetails._id%>">Delete Store</a></button>
   </div>
 </a>
 <% }else{%>
