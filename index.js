@@ -61,7 +61,7 @@ const dashboardRoutes = require('./routers/dashboard');
 const inventoryRoutes = require('./routers/inventory');
 const storeRoutes = require('./routers/store');
 const productRoutes = require('./routers/product');
-// const subcategoryRoutes = require('./routers/subcategory');
+const categoryRoutes = require('./routers/category');
 
 app.use("/auth", authRoutes);
 app.use('/', landingPage);
@@ -69,7 +69,7 @@ app.use('/inventory', inventoryRoutes);
 app.use('/store', storeRoutes);
 app.use('/dashboard', dashboardRoutes); 
 app.use('/product', productRoutes);
-// app.use('/subcategory', subcategoryRoutes);
+app.use('/category', categoryRoutes);
 
 // Start the server
 app.listen(8000, () => {

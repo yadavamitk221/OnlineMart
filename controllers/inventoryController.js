@@ -3,25 +3,23 @@
 const Inventory = require("../models/Inventory");
 const Category = require("../models/Category");
 const subCategory = require("../models/SubCategory");
-const Store = require('../models/Store');
+const Store = require("../models/Store");
 
 // Handle adding an inventory item
 exports.addInventory = async (req, res) => {
   // Validate input fields
-  let reqcategory = req.params["category"].slice(1);
-  let reqsubcatgory = req.params["subCategory"].slice(1);
-
+  let reqcategory = req.params["category"];
+  let reqsubcatgory = req.params["subCategory"];
 
   try {
     // Fionding Store of associated with logedin user
     const store = await Store.findOne({ userid: req.user.id });
-  
+
     // finding the category in
     const category = await Category.findOne({
       name: reqcategory,
-      userid: req.user.id
+      userid: req.user.id,
     });
-
 
     // Checking if category exist, if not then creating
     let category_id;
@@ -29,24 +27,22 @@ exports.addInventory = async (req, res) => {
       category_id = category._id;
     } else {
       const newCategory = await Category.create({
-        name: reqcategory,   
+        name: reqcategory,
         userid: req.user.id,
       });
       category_id = newCategory._id;
     }
 
     // Checking if subCategory exist, if not then creating
-    const subCategorys = await subCategory.findOne({name: reqsubcatgory, userid: req.user.id });
+    const subCategorys = await subCategory.findOne({
+      name: reqsubcatgory,
+      userid: req.user.id,
+    });
     let subCategory_id;
     if (subCategorys) {
       subCategory_id = subCategorys._id;
     } else {
-      console.log("name", reqsubcatgory);
-      console.log("categoryid", category_id);
-      console.log("userid", req.user.id);
-
-
-        const newsubCategory = await subCategory.create({
+      const newsubCategory = await subCategory.create({
         name: reqsubcatgory,
         categoryid: category_id,
         userid: req.user.id,
@@ -55,7 +51,6 @@ exports.addInventory = async (req, res) => {
     }
 
     // creating new inventory
-    console.log(req.body);
     await Inventory.create({
       productName: req.body.productName,
       mrp: req.body.mrp,
@@ -64,8 +59,16 @@ exports.addInventory = async (req, res) => {
       subCategoryid: subCategory_id,
       categoryid: category_id,
       storeid: store._id,
-      userid: req.user.id
+      userid: req.user.id,
     });
+
+    if (req.xhr) {
+      return res.status(200).json({
+        message: "Inventory is created",
+      });
+    }
+
+    return res.redirect("back");
   } catch (error) {
     console.log("Error in adding the inventory", error);
     return res
@@ -77,21 +80,56 @@ exports.addInventory = async (req, res) => {
   // Redirect to the inventory page or send a success response
 };
 
-// Handle editing an inv up sessions or JWT for authentication
-// Redirect to the dashboarentory item
-exports.editInventory = async (req, res) => {
-  // Validate input fields
-  // Update the inventory item in the database
-  // Redirect to the inventory page or send a success response
+module.exports.inventoryForm = async function(req, res) {
+  try {
+    let subcatageory = await subCategory.find({ userid: req.user.id }).populate(
+      "categoryid",
+      "name"
+    );
+
+    const data = {};
+    subcatageory.forEach((item) => {
+      const category = item.categoryid.name;
+      if (!data[category]) {
+        data[category] = [];
+      }
+      data[category].push(item.name);
+    });
+
+    console.log(data);
+
+    return res.render("inventory", {
+      title: "Add inventory",
+      data,
+    });
+  } catch (err) {
+    console.log("Error in showing Category Details ==> ", err);
+    return res.redirect("back");
+  }
 };
 
-// Handle deleting an inventory item
-// exports.deleteInventory
 
-exports.inventoryForm = (req, res) => {
+module.exports.getCategorys = async function (req, res) {
   try {
-    return res.render("Inventory");
-  } catch (error) {
-    console.log("error in rendering the Inventory form page", error);
+    let subcatageory = await subCategory.find({ userid: req.user.id }).populate(
+      "categoryid",
+      "name"
+    );
+
+    const data = {};
+    subcatageory.forEach((item) => {
+      const category = item.categoryid.name;
+      if (!data[category]) {
+        data[category] = [];
+      }
+      data[category].push(item.name);
+    });
+
+    console.log(data);
+
+    return res.status(200).json({data});
+  } catch (err) {
+    console.log("Error in showing Category Details ==> ", err);
+    return res.redirect("back");
   }
 };

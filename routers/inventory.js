@@ -16,14 +16,21 @@ router.post(
 //     passport.checkAuthentication,
 //     inventoryController.deleteInventory
 // );
-  
+
 // router.post(
 //     "/addStore",
 //     passport.checkAuthentication,
 //     inventoryController.editInventory
 // );
-  
+
 router.get("/inventoryForm", inventoryController.inventoryForm);
+
+router.get(
+  "/getCategory/ajax",
+  inventoryController.getCategorys
+);
+
+router.get("/category", inventoryController.inventoryForm);
 
 // use passport as middleware to authenticate
 

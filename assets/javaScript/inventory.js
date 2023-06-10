@@ -1,54 +1,61 @@
 /** @format */
 
-var categorySelect = document.getElementById("category");
-var subcategorySelect = document.getElementById("subcategory");
+(function data() {
+  fetch("/inventory/getCategory/ajax")
+    .then((response) => response.json())
+    .then((subcategories) => {
+      subcatageory = subcategories.data;
+    })
+    .catch((error) => {
+      console.error(error);
+    });
+})();
 
-// Add subcategory options based on the selected category
-categorySelect.addEventListener("change", function () {
-  // Clear previous options
-  subcategorySelect.innerHTML = '<option value="">Select Subcategory</option>';
+function updateSubcategories() {
+  const categorySelect = document.getElementById("category");
+  const subcategorySelect = document.getElementById("subcategory");
 
-  // Get selected category
-  var selectedCategory = categorySelect.value;
+  // Clear previous subcategories
+  subcategorySelect.innerHTML = "";
 
-  // Add subcategory options based on the selected category
-  if (selectedCategory === "electronics") {
-    subcategorySelect.innerHTML +=
-      '<option value="smartphones">Smartphones</option>';
-    subcategorySelect.innerHTML += '<option value="laptops">Laptops</option>';
-    subcategorySelect.innerHTML += '<option value="cameras">Cameras</option>';
-  } else if (selectedCategory === "clothing") {
-    subcategorySelect.innerHTML += '<option value="men">Men</option>';
-    subcategorySelect.innerHTML += '<option value="women">Women</option>';
-    subcategorySelect.innerHTML += '<option value="kids">Kids</option>';
-  } else if (selectedCategory === "books") {
-    subcategorySelect.innerHTML += '<option value="fiction">Fiction</option>';
-    subcategorySelect.innerHTML +=
-      '<option value="nonfiction">Nonfiction</option>';
-    subcategorySelect.innerHTML += '<option value="science">Science</option>';
+  // Get the selected category
+  const selectedCategory = categorySelect.value;
+
+  // Populate subcategories based on the selected category
+  if (selectedCategory in subcatageory) {
+    const categorySubcategories = subcatageory[selectedCategory];
+    categorySubcategories.forEach(function (subcategory) {
+      const option = document.createElement("option");
+      option.text = subcategory;
+      subcategorySelect.add(option);
+    });
   }
-});
+}
+
 
 let addProductToInventory = function () {
   let addInventorySelect = $("#addInventory");
   addInventorySelect.submit(function (e) {
     e.preventDefault();
-    console.log("==--------==========");
-    console.log("Inside a addProduct to Inventoryy");
+    const categorySelect = $("#category");
+    const subcategorySelect = $("#subcategory");
     let category = categorySelect.value;
     console.log(category);
     let subCategory = subcategorySelect.value;
     console.log(subCategory);
     $.ajax({
       type: "post",
-      url: `/inventory/addInventory/:${category}/:${subCategory}`,
+      url: `/inventory/addInventory/${category}/${subCategory}`,
       data: addInventorySelect.serialize(),
-    //   success: function (data) {
-    //   },
+      success: function (data) {
+        console.log("Data ********", data.message);
+      },
       error: function (error) {
         console.log(error.responseText);
       },
     });
+    document.getElementById('addInventory').reset();
+    alert('Inventory Added');
   });
 };
 addProductToInventory();
