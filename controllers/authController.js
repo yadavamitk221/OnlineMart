@@ -40,7 +40,7 @@ exports.createSession = async (req, res) => {
       console.log("password didnot match", user);
       return res.redirect('back');
     }
-  } catch (error) {
+  } catch (err) {
     console.log(`Error in login the user ${err}`);
     return res.status(400).json({message: "Invalid userID and Password"});
   }

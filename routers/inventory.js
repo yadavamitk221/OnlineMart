@@ -2,11 +2,13 @@
 const express = require("express");
 const passport = require("passport");
 const router = express.Router();
+const upload = require('../config/multer');
 
 const inventoryController = require("../controllers/inventoryController");
 
 router.post(
   "/addInventory/:category/:subCategory",
+  upload.single("filename"),
   passport.checkAuthentication,
   inventoryController.addInventory
 );
@@ -25,10 +27,7 @@ router.post(
 
 router.get("/inventoryForm", inventoryController.inventoryForm);
 
-router.get(
-  "/getCategory/ajax",
-  inventoryController.getCategorys
-);
+router.get("/getCategory/ajax", inventoryController.getCategorys);
 
 router.get("/category", inventoryController.inventoryForm);
 

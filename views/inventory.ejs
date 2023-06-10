@@ -4,10 +4,8 @@
 <h1>Add Your Items here</h1>
 <br />
 <br />
-
-<h1>Select Category and Subcategory</h1>
-<form id="addInventory" action="inventory/addInventory" method="post">
-  <label for="">Select Your Category</label>
+<form id="addInventory" action="inventory/addInventory" method="post" enctype="multipart/form-data">
+  <label for="">Select Your Category: </label>
   <select id="category" onchange="updateSubcategories()" required>
     <option disabled selected>Category</option>
     <% for (const category in data) { %>
@@ -15,51 +13,36 @@
     <%}%>
   </select><br /><br />
 
-  <label for="">Select Your Subcategory</label>
+  <label for="">Select Your Subcategory: </label>
   <select id="subcategory" required>
     <option disabled selected>Subategory</option>
   </select><br /><br />
-<!-- --------------------------------------------------------- -->
-<!-- --------------------------------------------------------- -->
 
-
-
-
-
-
-
-
-
-
-
-
-
-  <label for="productName">Product Name</label>
+  <label for="productName">Product Name: </label>
   <input type="text" name="productName" id="productName" />
   <br />
   <br />
 
-  <label for="mrp">MRP</label>
+  <label for="mrp">MRP: </label>
   <input type="number" name="mrp" id="mrp" />
   <br />
   <br />
 
-  <label for="sp">SP</label>
+  <label for="sp">SP:</label>
   <input type="number" name="sp" id="sp" />
   <br />
   <br />
 
-  <label for="qty">qty</label>
+  <label for="qty">QTY:</label>
   <input type="number" name="qty" id="qty" />
   <br />
 
   <br />
+
+  <label for="product">Add Your Store Logo : </label>
+      <input type="file" name="filename" id="product" required />
+      <br /><br />
   <br />
 
   <input type="submit">
 </form>
-
-<% for(o in data){ %>
-      <h1> <%= o %> </h1>
-      <%= data[o] %> 
-  <% } %>

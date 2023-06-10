@@ -7,11 +7,14 @@ const session = require('express-session');
 const expressLayouts = require('express-ejs-layouts');
 const MongoStore = require('connect-mongo');
 const passport = require("passport");
+const multer = require('multer');
 
 // Configure middleware
 const passportLocal = require("./config/passport-local");
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
+
+app.use("/assets", express.static(__dirname + "/assets"));
 
 // Database connection
 const db = require("./config/db");

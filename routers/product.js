@@ -9,6 +9,11 @@ router.get(
   showProductController.showProducts
 );
 
+
+router.get(
+  "/showProduct/:id/:search",
+  showProductController.showProductsAjax
+);
 // use passport as middleware to authenticate
 
 module.exports = router;

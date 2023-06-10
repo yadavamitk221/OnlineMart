@@ -1,15 +1,18 @@
 <!-- @format -->
 <link rel="stylesheet" href="/css/productDetails.css" />
 
-
 <h1><%= store.storeName %></h1>
+
+<label for="">Search Your Product </label>
+<input type="text" id="searchBar" />
+<button id="searchBtn"  value="<%=store.id%>">Search</button>
+
 <div class="main-container">
-  
-  <% if(products){%> <% for(let i = 0; i < products.length; i++){%>
+  <% for(let i = 0; i < products.length; i++){%>
   <div class="product-body">
     <div class="card">
       <div class="header"><%= products[i].productName %></div>
-      <div class="body">
+      <div class="bodys">
         <div class="details">
           <div class="details-name">MRP: <%= products[i].mrp %></div>
         </div>
@@ -22,7 +25,7 @@
       </div>
     </div>
   </div>
-  <% } %> <% }else{%>
-  <h3>No Products to display</h3>
   <% } %>
 </div>
+
+<script src="/javaScript/searchProduct.js"></script>

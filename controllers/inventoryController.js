@@ -58,6 +58,7 @@ exports.addInventory = async (req, res) => {
       qty: req.body.qty,
       subCategoryid: subCategory_id,
       categoryid: category_id,
+      image: req.file.filename,
       storeid: store._id,
       userid: req.user.id,
     });

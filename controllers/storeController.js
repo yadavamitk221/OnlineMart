@@ -3,6 +3,9 @@ const Store = require("../models/Store");
 const Category = require('../models/Category');
 const SubCategory = require('../models/SubCategory');
 const Inventory = require('../models/Inventory');
+const upload = require('../config/multer');
+const multer = require('multer');
+
 // Handle addStoreInfo
 exports.addStoreInfo = async (req, res) => {
   try {
@@ -12,13 +15,15 @@ exports.addStoreInfo = async (req, res) => {
         .status(400)
         .json({ message: "Store with this name is already registered" });
     } else {
+      console.log(req.file); 
       await Store.create({     
         storeName: req.body.storeName,
         address: req.body.address,
         gst: req.body.gst,
+        logo: req.file.filename,
         startTiming: req.body.startTiming,
         closeTiming: req.body.closeTiming,
-        userid: req.user.id
+        userid: req.user.id  
       });
       return res.redirect('/dashboard/details');
     }

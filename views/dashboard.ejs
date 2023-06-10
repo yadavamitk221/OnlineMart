@@ -16,9 +16,12 @@
 
 <%if(storeDetails){ %>
 
-<a href="/product/showProduct/<%=storeDetails.userid%>">
+<a  href="/product/showProduct/<%=storeDetails.userid%>">
   <div class="store-container">
     <div class="store-details">
+      <br><br>
+      <img src="/image/<%=storeDetails.logo%>" alt="<%= locals.user.name%>" width="100" />
+      <br><br>
       <h3>Shop Name: <%= storeDetails.storeName %></h3>
       <p>Address <%= storeDetails.address%></p>
       <p>GST <%= storeDetails.gst%></p>
@@ -28,8 +31,13 @@
     <button><a href="/store/delete/<%=storeDetails._id%>">Delete Store</a></button>
   </div>
 </a>
+
+<h3>
+  This is your Store URL: <a href="/product/showProduct/<%=storeDetails.userid%>">/product/showProduct/<%=store.userid%></a>
+</h3>
 <% }else{%>
 <button>
   <a href="/store/storeForm">Add Store</a>
 </button>
 <% } %>
+

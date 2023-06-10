@@ -10,7 +10,7 @@
   <div class="form-container">
     <h3 id="page-title">Welcome (store Name)</h3>
 
-    <form action="/store/addStore" method="post">
+    <form action="/store/addStore" method="post" enctype="multipart/form-data">
       <br /><br />
       <label for="storeName">storeName</label>
       <input type="text" name="storeName" id="storeName" required />
@@ -36,6 +36,10 @@
         placeholder="Your Gst Number..."
         required
       />
+      <br /><br />
+
+      <label for="logo">Add Your Store Logo : </label>
+      <input type="file" name="filename" id="logo" required />
       <br /><br />
 
       <label for="startTiming">Store Time :</label>
