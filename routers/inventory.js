@@ -8,7 +8,7 @@ const inventoryController = require("../controllers/inventoryController");
 
 router.post(
   "/addInventory/:category/:subCategory",
-  upload.single("filename"),
+  upload.single("file"),
   passport.checkAuthentication,
   inventoryController.addInventory
 );

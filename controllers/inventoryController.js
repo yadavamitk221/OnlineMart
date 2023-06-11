@@ -14,7 +14,7 @@ exports.addInventory = async (req, res) => {
   try {
     // Fionding Store of associated with logedin user
     const store = await Store.findOne({ userid: req.user.id });
-
+    console.log("dwew", req.file);
     // finding the category in
     const category = await Category.findOne({
       name: reqcategory,
@@ -48,9 +48,8 @@ exports.addInventory = async (req, res) => {
         userid: req.user.id,
       });
       subCategory_id = newsubCategory._id;
-    }
-
-    // creating new inventory
+    };
+    
     await Inventory.create({
       productName: req.body.productName,
       mrp: req.body.mrp,
@@ -58,7 +57,7 @@ exports.addInventory = async (req, res) => {
       qty: req.body.qty,
       subCategoryid: subCategory_id,
       categoryid: category_id,
-      image: req.file.filename,
+      image: req.body.file,
       storeid: store._id,
       userid: req.user.id,
     });
